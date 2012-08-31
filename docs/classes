@@ -1,0 +1,107 @@
+TSelectEquation
+The component represents a menu and when choosing a formula element adds it in Equation: TQDSEquation.
+
+TQDSEquation.
+Component – equation editor. Includes the EditAreaList
+
+Properties
+ActiveEditArea: TEditArea
+Includes a link to an active TEditArea
+Data: String
+Includes an object tree in a text form. For example, the integral from 0 to infinity along xdx looks like:
+EditArea(IntLimitBottomTopOne(EditArea(Simple(x)Simple(d)Simple(x))EditArea(Simple(0))EditArea(ExtSymbol(8734))))
+
+Methods
+AddEditArea
+Adds EditArea to the position EditAreaIndex+1
+InsertEditArea
+Adds EditArea to the position EditAreaIndex
+DeleteEditArea
+Deletes EditArea with the Index
+
+TEditArea – Class-container that visually looks like a field for text insertion. It includes a cursor and a list of pointers to the exemplars of TEquation class descendants. The TEditArea class is the most functional, as it manages their coordinates and sizes depending on a specified font, and comprises the methods that allow adding any symbol and element in it. Any element is placed at the position pointed out in EquationIndex, i.e. current cursor position.
+Methods:
+AddEqSimple(Ch: Char); Add ANSI symbol. Ch is a symbol.
+
+AddEqExtSymbol(SymbolCode: Integer);
+Add Unicode symbol.
+SymbolCode is a symbol code.
+
+AddEqBrackets(kb: TKindBracket);
+Add element “Brackets”.
+kb is a brackets type.
+
+AddEqIndex(go: TGroupOptions);
+Add element “Index”
+go is indexes options.
+
+AddEqSumma(go: TGroupOptions);
+Add element “Sum”
+go is indexes options.
+
+AddEqIntegral(go: TGroupOptions; Size: Integer; Ring: Boolean);
+Add element “Integral”
+go is indexes options, Size[1..3] – is an integral order, Ring – to draw a circumference.
+AddEqMultiply(go: TGroupOptions);
+Add element “Product”
+go is indexes options.
+
+AddEqCoMult(go: TGroupOptions);
+Add element “Coproduct”
+go is indexes options.
+
+AddEqIntersection(go: TGroupOptions);
+Add element “Intersection”
+go is indexes options.
+
+AddEqJoin (go: TGroupOptions);
+Add element “Integrating”
+go is indexes options.
+
+AddEqVector(ka: TKindArrow; ae: TAlignEA);
+Add element “Vector”
+ka is arrow options, ae is a position of a text field.
+
+AddEqArrow(ka: TKindArrow; ae: TAlignEA);
+Add element “Arrow”
+ka is arrow options, ae is a position of a text field.
+
+AddEqMatrix(km: TKindMatrix; CountEA: Integer);
+Add element “Matrix”
+km is a matrix type, CountEA is quantity of elements
+
+
+Additional types and sets
+
+TKindBracket = (kbRound, kbSquare, kbFigure, kbCorner, kbModule, kbDModule)
+Brackets type.
+kbRound - Round
+kbSquare - Square
+kbFigure - Figure
+kbCorner - Corner
+kbModule - Modular
+kbDModule – Double module
+
+TGroupOptions  = (goIndexTop, goIndexBottom, goLimitTop, goLimitBottom)
+Indexes options
+goIndexTop – Index at the top
+goIndexBottom – Index in the bottom
+goLimitTop – Limit at the top
+goLimitBottom – Limit in the bottom
+
+TKindArrow = set of (kaRight, kaLeft, kaDouble);
+Arrow options
+kaRight – Arrow to the left
+kaLeft – Arrow to the right
+kaDouble – Double arrow
+
+TAlignEA = (aeTop, aeBottom);
+Position of a text field
+aeTop – At the top
+aeBottom – In the bottom
+
+TKindMatrix = (kmHoriz, kmVert, kmSquare);
+Matrix type
+kmHoriz - Horizontal
+kmVert - Vertical
+kmSquare - Square
