@@ -7,6 +7,9 @@ unit SelectEquation;
 interface
 
 uses
+ {$IFDEF FPC}
+  LCLVersion,
+ {$IFEND}
   SysUtils, Classes, Controls, ExtCtrls, ComCtrls, Contnrs, ImgList, Dialogs,
   Graphics, StdCtrls, Equations, UsefulUtils;
 
@@ -463,7 +466,11 @@ begin
   FPageControl:=TPageControl.Create(Self);
   FPageControl.Parent:=Self;
   FPageControl.Align:=alClient;
+ {$IFDEF FPC}
+  {$IF LCL_FullVersion >= 2010000}
   FPageControl.Style:=tsButtons;
+  {$IFEND}
+ {$ENDIF}
   for i:=1 to Length(FEqDataList)-1 do begin
     TabSheet:=TTabSheet.Create(FPageControl);
     TabSheet.Parent:=FPageControl;
