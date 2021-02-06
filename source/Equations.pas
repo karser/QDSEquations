@@ -1,6 +1,10 @@
 //{$Define DEMO}
 unit Equations;
 
+{$IFDEF FPC}
+ {$MODE Delphi}
+{$ENDIF}
+
 interface
 
 uses

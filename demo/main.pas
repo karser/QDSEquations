@@ -1,5 +1,9 @@
 unit main;
 
+{$IFDEF FPC}
+ {$MODE Delphi}
+{$ENDIF}
+
 interface
 
 uses
@@ -40,15 +44,16 @@ var
 
 implementation
 
-{$R *.dfm}
-
+{$IFDEF FPC}
+ {$R *.lfm}
+{$ELSE}
+ {$R *.dfm}
+{$ENDIF}
 
 procedure TfrmMain.FormCreate(Sender: TObject);
-var Canvas: TCanvas;
+//var Canvas: TCanvas;
 
 begin
-
-
   QDSEquation1.Data:='EditArea(IntLimitBottomTopOne(EditArea(Simple(x)Simple(d)Simple(x))EditArea(Simple(0))EditArea(ExtSymbol(8734))))';
   ComboBox1Change(Self);
   Caption:=Format('%s v%s',[Caption,QDSEquation1.Version]);

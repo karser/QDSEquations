@@ -94,7 +94,7 @@ OutputDir=
 UnitOutputDir=Delphi7\
 PackageDLLOutputDir=Delphi7\
 PackageDCPOutputDir=Delphi7\
-SearchPath=Delphi7\
+SearchPath=Delphi7\;D:\Prog_Lazarus\git\QDSEquations\source;D:\Prog_Lazarus\git\QDSEquations\resources
 Packages=vcl;rtl;vclx;indy;inet;xmlrtl;vclie;inetdbbde;inetdbxpress;dbrtl;dsnap;dsnapcon;vcldb;soaprtl;VclSmp;dbexpress;dbxcds;inetdb;bdertl;vcldbx;webdsnap;websnap;adortl;ibxpress;teeui;teedb;tee;dss;visualclx;visualdbclx;vclactnband;vclshlctrls;IntrawebDB_50_70;Intraweb_50_70;Rave50CLX;Rave50VCL;dclOfficeXP;CoolTrayIcon_D5;vclAbsDBd7;QDSEquationsD7
 Conditionals=
 DebugSourceDirs=
@@ -138,9 +138,11 @@ Comments=Qds Equations
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlSearchPath]
-Count=2
-Item0=Delphi7\
-Item1=..\package\Delphi7\
+Count=4
+Item0=Delphi7\;D:\Prog_Lazarus\git\QDSEquations\source;D:\Prog_Lazarus\git\QDSEquations\resources
+Item1=Delphi7\;D:\Prog_Lazarus\git\QDSEquations\source
+Item2=Delphi7\
+Item3=..\package\Delphi7\
 [HistoryLists\hlUnitOutputDirectory]
 Count=2
 Item0=Delphi7\

@@ -1,131 +1,152 @@
 object frmMain: TfrmMain
-  Left = 200
-  Top = 129
-  Width = 1000
-  Height = 476
+  Left = 317
+  Height = 437
+  Top = 151
+  Width = 874
   Caption = 'QDS Eqations'
+  ClientHeight = 437
+  ClientWidth = 874
   Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
-  Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  LCLVersion = '2.1.0.0'
   object Panel1: TPanel
     Left = 0
-    Top = 316
-    Width = 984
     Height = 121
+    Top = 316
+    Width = 874
     Align = alBottom
+    ClientHeight = 121
+    ClientWidth = 874
+    Font.Color = clWindowText
+    ParentFont = False
     TabOrder = 0
-    DesignSize = (
-      984
-      121)
     object Label1: TLabel
       Left = 8
-      Top = 20
-      Width = 23
-      Height = 13
+      Height = 15
+      Top = 18
+      Width = 24
       Anchors = [akLeft, akBottom]
       Caption = 'Data'
+      ParentColor = False
     end
     object Label2: TLabel
-      Left = 657
-      Top = 1
-      Width = 48
-      Height = 13
+      Left = 549
+      Height = 15
+      Top = -1
+      Width = 52
       Anchors = [akRight, akBottom]
       Caption = 'Language'
+      ParentColor = False
     end
     object Memo1: TMemo
       Left = 1
-      Top = 40
-      Width = 982
       Height = 80
+      Top = 40
+      Width = 872
       Align = alBottom
+      OnChange = Memo1Change
       TabOrder = 0
       WantReturns = False
-      OnChange = Memo1Change
     end
     object ComboBox1: TComboBox
-      Left = 655
-      Top = 14
+      Left = 545
+      Height = 23
+      Top = 15
       Width = 127
-      Height = 24
-      Style = csDropDownList
       Anchors = [akRight, akBottom]
-      Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Courier'
-      Font.Style = []
-      ItemHeight = 16
+      ItemHeight = 15
       ItemIndex = 0
-      ParentFont = False
-      TabOrder = 1
-      Text = 'Russian'
-      OnChange = ComboBox1Change
       Items.Strings = (
         'Russian'
         'Deutsche'
-        'English')
+        'English'
+      )
+      OnChange = ComboBox1Change
+      ParentFont = False
+      Style = csDropDownList
+      TabOrder = 1
+      Text = 'Russian'
     end
     object Button1: TButton
-      Left = 802
+      Left = 692
+      Height = 25
       Top = 13
       Width = 75
-      Height = 25
       Anchors = [akRight, akBottom]
       Caption = 'Font..'
-      TabOrder = 2
       OnClick = Button1Click
+      TabOrder = 2
     end
     object Button2: TButton
-      Left = 901
+      Left = 791
+      Height = 25
       Top = 13
       Width = 75
-      Height = 25
       Anchors = [akRight, akBottom]
       Caption = 'BkColor..'
-      TabOrder = 3
       OnClick = Button2Click
+      TabOrder = 3
     end
   end
   object SelectEquation1: TSelectEquation
     Left = 0
-    Top = 0
-    Width = 984
     Height = 121
+    Top = 0
+    Width = 874
     Align = alTop
     Equation = QDSEquation1
     Language = lRussian
   end
   object QDSEquation1: TQDSEquation
     Left = 0
-    Top = 121
-    Width = 984
     Height = 195
+    Top = 121
+    Width = 874
     Align = alClient
     BkColor = clWhite
     Data = 'EditArea()'
-    Font.Charset = RUSSIAN_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
-    Font.Height = -27
-    Font.Name = 'Times New Roman'
-    Font.Style = []
     OnChange = QDSEquation1Change
   end
   object FontDialog1: TFontDialog
-    Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
+    MinFontSize = 0
+    MaxFontSize = 0
+    Left = 712
+    Top = 248
   end
   object ColorDialog1: TColorDialog
-    Left = 32
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    Left = 808
+    Top = 248
   end
 end

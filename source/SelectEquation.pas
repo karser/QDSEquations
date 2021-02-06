@@ -1,8 +1,15 @@
 unit SelectEquation;
 
+{$IFDEF FPC}
+ {$MODE Delphi}
+{$ENDIF}
+
 interface
 
 uses
+ {$IFDEF FPC}
+  LCLVersion,
+ {$IFEND}
   SysUtils, Classes, Controls, ExtCtrls, ComCtrls, Contnrs, ImgList, Dialogs,
   Graphics, StdCtrls, Equations, UsefulUtils;
 
@@ -60,7 +67,9 @@ type
     property BevelOuter;
     property BevelWidth;
     property Constraints;
+    {$IFNDEF FPC}
     property Ctl3D;
+    {$ENDIF}
     property Enabled;
     property Equation: TQDSEquation read FQDSEquation write SetQDSEquation;
     property Language: TLanguage read FLanguage write SetLanguage;
@@ -80,8 +89,13 @@ procedure Register;
 
 implementation
 
-{$R images.res}
-{$R localize.res}
+{$IFDEF FPC}
+ {$R ../resources/images.res}
+ {$R ../resources/localize.res}
+{$ELSE}
+ {$R images.res}
+ {$R localize.res}
+{$ENDIF}
 
 procedure Register;
 begin
@@ -413,13 +427,25 @@ end;
 procedure TSelectEquation.CreateImageLists;
 var
   i: Integer;
+  {$IFDEF FPC}
+  bmp: TBitmap;
+  {$ENDIF}
 begin
   FImageLists:=TImageLists.Create;
   for i:=0 to Length(FEqDataList)-1 do begin
     FImageLists.Insert(i, TImageList.Create(Self));
     FImageLists.Items[i].Width:=FEqDataList[i].Width;
     FImageLists.Items[i].Height:=FEqDataList[i].Height;
+    {$IFDEF FPC}
+    bmp := TBitmap.Create;
+    bmp.Transparent := true;
+    bmp.TransparentColor := clWhite;
+    bmp.LoadFromResourceName(HINSTANCE, 'BT'+IntToStrZero(i, 2));
+    FImageLists.Items[i].AddSliced(bmp, FEqDataList[i].Count, 1);
+    bmp.Free;
+    {$ELSE}
     FImageLists.Items[i].GetResource(rtBitmap,'BT'+IntToStrZero(i, 2),FImageLists.Items[i].Width,[lrTransparent],clWhite);
+    {$ENDIF}
   end;
 end;
 
@@ -440,7 +466,11 @@ begin
   FPageControl:=TPageControl.Create(Self);
   FPageControl.Parent:=Self;
   FPageControl.Align:=alClient;
+ {$IFDEF FPC}
+  {$IF LCL_FullVersion >= 2010000}
   FPageControl.Style:=tsButtons;
+  {$IFEND}
+ {$ENDIF}
   for i:=1 to Length(FEqDataList)-1 do begin
     TabSheet:=TTabSheet.Create(FPageControl);
     TabSheet.Parent:=FPageControl;
@@ -460,7 +490,7 @@ begin
   FToolBar.Parent:=AParent;
   FToolBar.AutoSize:=True;
   FToolBar.Flat:=True;
-  FToolBar.ButtonHeight:=FEqDataList[Index].Height;
+  FToolBar.ButtonHeight:=FEqDataList[Index].Height + 8;
   FToolBar.ButtonWidth:=FEqDataList[Index].Width;
   FToolBar.Images:=FImageLists.Items[Index];
   for i:=FEqDataList[Index].Count-1 downto 0 do begin
