@@ -9,3 +9,11 @@ It’s quite easy to enter formulas in it:
 *	special symbols and formula elements are entered with the help of an additional menu
 
 ![Qds Equations](docs/snapshot.PNG)
+
+
+## How to compile resources
+
+- If you have Delphi installed (brcc32) just run `cmpres.cmd` in resources folder.
+- For Lazarus run `cmpres_windres.cmd`. In requires `windres` which can be obtained by [installing MinGW](https://sourceforge.net/projects/mingw-w64/) and selecting `mingw32-base`.
+
+Contributions Welcome!
